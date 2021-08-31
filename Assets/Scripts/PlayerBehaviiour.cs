@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerBehaviiour : MonoBehaviour
 {
     public float speed = 10;
-    public float jumpStrength = 10.0f;
+    public float jumpHeight = 10.0f;
     public float gravityModifier = 1.0f;
-    private CharacterController _controller;
-    
 
+    public Camera PlayerCamera;
+
+    private CharacterController _controller;
+    private bool _grounded = false;
     private Vector3 _desiredVelocity;
     private Vector3 _airVelocity;
     private bool _isJumpedDesired;
@@ -22,24 +24,35 @@ public class PlayerBehaviiour : MonoBehaviour
     {
         //get jump input
         _isJumpedDesired = Input.GetButtonDown("Jump");
+        //Physics.CheckSphere(groundCheck.position, 0.2f, layer);
+        _grounded = _controller.isGrounded;
 
         //get movement input
-        _desiredVelocity.x = Input.GetAxis("Horizontal");
+        float inputRight = Input.GetAxis("Horizontal");
         _desiredVelocity.y = 0.0f;
-        _desiredVelocity.z = Input.GetAxis("Vertical");
+        float inputForward = Input.GetAxis("Vertical");
 
+
+        //get camera transforms
+        Vector3 cameraForward = PlayerCamera.transform.forward;
+        cameraForward.y = 0.0f;
+        cameraForward.Normalize();
+        Vector3 cameraRight = PlayerCamera.transform.right;
+        _desiredVelocity = inputRight *cameraRight +inputForward*cameraForward;
         //set movement magnitude
         _desiredVelocity.Normalize();
         _desiredVelocity *= speed;
 
         //apply jump strength
-        if (_isJumpedDesired)
+        if (_isJumpedDesired && _grounded)
         {
-            _airVelocity.y = jumpStrength;
+            _airVelocity.y = Mathf.Sqrt(-2.0f * Physics.gravity.y * gravityModifier * jumpHeight);
         }
+        else if (_grounded)
+            _airVelocity.y = -1.0f;
         
         //apply gravity
-        _airVelocity += Physics.gravity * gravityModifier * Time.deltaTime;
+        _airVelocity += Physics.gravity * gravityModifier * Time.fixedDeltaTime;
         _desiredVelocity += _airVelocity;
 
         //move
