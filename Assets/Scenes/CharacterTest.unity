@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &111756221 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 951238200076403893, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
+  m_PrefabInstance: {fileID: 1966190893604481911}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &482113585
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,11 +223,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &780190371 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1725904161067393057, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-  m_PrefabInstance: {fileID: 1966190893604481911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1075043555
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +422,7 @@ GameObject:
   - component: {fileID: 1942515262}
   - component: {fileID: 1942515261}
   - component: {fileID: 1942515260}
+  - component: {fileID: 1942515263}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -494,6 +495,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 8.672, y: -30.435, z: 0}
+--- !u!114 &1942515263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942515259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7e7ad6023c75548b92303bfb66283e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 111756221}
+  distanceFromTarget: 10
+  sensitivity: 10
+  invertY: 0
 --- !u!1 &1973880702
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,12 +623,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2328740939204085981, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
       propertyPath: gravityModifier
-      value: 5
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2328740939204085981, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
       propertyPath: groundCheck
       value: 
-      objectReference: {fileID: 780190371}
+      objectReference: {fileID: 0}
     - target: {fileID: 2328740939204085981, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
       propertyPath: layer.m_Bits
       value: 256
