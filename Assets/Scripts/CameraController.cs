@@ -6,10 +6,10 @@ public class CameraController : MonoBehaviour
 {
     public Transform target;
     public float MaxDistance = 10.0f;
-    public float currentDistance;
     public float sensitivity = 10;
     public bool invertY = false;
     public float relaxSpeed = 10.0f;
+    private float _currentDistance;
     private void Update()
     {
         //Rotate the camera
@@ -31,9 +31,10 @@ public class CameraController : MonoBehaviour
         //move the camera
         RaycastHit hit;
         if (Physics.Raycast(target.position, -transform.forward, out hit, MaxDistance))
-            currentDistance = hit.distance;
+            _currentDistance = hit.distance;
         else
-            currentDistance = Mathf.MoveTowards(currentDistance, MaxDistance,relaxSpeed* Time.deltaTime);
-        transform.position = target.position + (currentDistance * -transform.forward);
+            _currentDistance = Mathf.MoveTowards(_currentDistance, MaxDistance,relaxSpeed* Time.deltaTime);
+
+        transform.position = target.position + (_currentDistance * -transform.forward);
     }
 }

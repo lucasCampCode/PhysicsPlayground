@@ -8,8 +8,11 @@ public class PlayerBehaviour : MonoBehaviour
     public float jumpHeight = 10.0f;
     public float gravityModifier = 1.0f;
     public float airControl = 1.0f;
+    public bool faceWithCamera = false;
 
     public Camera PlayerCamera;
+    [SerializeField]
+    private Animator _animator;
 
     private CharacterController _controller;
     private bool _grounded = false;
@@ -33,16 +36,31 @@ public class PlayerBehaviour : MonoBehaviour
         _desiredVelocity.y = 0.0f;
         float inputForward = Input.GetAxis("Vertical");
 
-
         //get camera transforms
         Vector3 cameraForward = PlayerCamera.transform.forward;
         cameraForward.y = 0.0f;
         cameraForward.Normalize();
         Vector3 cameraRight = PlayerCamera.transform.right;
         _desiredVelocity = inputRight * cameraRight + inputForward * cameraForward;
-        //set movement magnitude
+        //animator.SetFloat("Direction",));
         _desiredVelocity.Normalize();
+        //set movement magnitude
         _desiredVelocity *= speed;
+
+         _animator.SetFloat("Speed", _desiredVelocity.magnitude / speed);
+        //change player facing
+        if (faceWithCamera)
+        {
+            transform.forward = cameraForward;
+            _animator.SetFloat("Speed", inputForward);
+            _animator.SetFloat("Direction", inputRight);
+        }
+        else if (_desiredVelocity != Vector3.zero)
+        {
+            transform.forward = _desiredVelocity;
+        }
+
+        _animator.SetBool("Jump", !_grounded);
 
         //apply jump strength
         if (_isJumpedDesired && _grounded)
