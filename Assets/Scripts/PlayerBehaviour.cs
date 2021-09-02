@@ -60,7 +60,7 @@ public class PlayerBehaviour : MonoBehaviour
             transform.forward = _desiredVelocity;
         }
 
-        _animator.SetBool("Jump", !_grounded);
+        _animator.SetBool("Jump",!_grounded);
 
         //apply jump strength
         if (_isJumpedDesired && _grounded)
