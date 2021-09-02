@@ -5,9 +5,11 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public Transform target;
-    public float distanceFromTarget = 30.0f;
+    public float MaxDistance = 10.0f;
+    public float currentDistance;
     public float sensitivity = 10;
     public bool invertY = false;
+    public float relaxSpeed = 10.0f;
     private void Update()
     {
         //Rotate the camera
@@ -15,10 +17,11 @@ public class CameraController : MonoBehaviour
         {
             Vector3 angles = transform.eulerAngles;
             Vector2 rotation;
-            rotation.x = Input.GetAxis("Mouse Y") * (invertY ? -1.0f : 1.0f);
+            rotation.x = Input.GetAxis("Mouse Y") * (invertY ? 1.0f : -1.0f);
             rotation.y = Input.GetAxis("Mouse X");
             //look up and down by rotating around X-axis
-            angles.x = Mathf.Clamp(angles.x + rotation.x * sensitivity,-90,90);
+            angles.x += rotation.x * sensitivity;
+            angles.x = Mathf.Clamp(angles.x, 0.0f, 75f);
             //look left and right by rotating arounf the y-axis
             angles.y += rotation.y * sensitivity;
             //set the angles
@@ -26,6 +29,11 @@ public class CameraController : MonoBehaviour
 
         }
         //move the camera
-        transform.position = target.position + (distanceFromTarget * -transform.forward);
+        RaycastHit hit;
+        if (Physics.Raycast(target.position, -transform.forward, out hit, MaxDistance))
+            currentDistance = hit.distance;
+        else
+            currentDistance = Mathf.MoveTowards(currentDistance, MaxDistance,relaxSpeed* Time.deltaTime);
+        transform.position = target.position + (currentDistance * -transform.forward);
     }
 }

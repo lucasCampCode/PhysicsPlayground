@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehaviiour : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviour
 {
     public float speed = 10;
     public float jumpHeight = 10.0f;
     public float gravityModifier = 1.0f;
+    public float airControl = 1.0f;
 
     public Camera PlayerCamera;
 
@@ -38,7 +39,7 @@ public class PlayerBehaviiour : MonoBehaviour
         cameraForward.y = 0.0f;
         cameraForward.Normalize();
         Vector3 cameraRight = PlayerCamera.transform.right;
-        _desiredVelocity = inputRight *cameraRight +inputForward*cameraForward;
+        _desiredVelocity = inputRight * cameraRight + inputForward * cameraForward;
         //set movement magnitude
         _desiredVelocity.Normalize();
         _desiredVelocity *= speed;
@@ -46,7 +47,7 @@ public class PlayerBehaviiour : MonoBehaviour
         //apply jump strength
         if (_isJumpedDesired && _grounded)
         {
-            _airVelocity.y = Mathf.Sqrt(-2.0f * Physics.gravity.y * gravityModifier * jumpHeight);
+            _airVelocity.y = Mathf.Sqrt((-2.0f * Physics.gravity.y) * jumpHeight);
         }
         else if (_grounded)
             _airVelocity.y = -1.0f;
