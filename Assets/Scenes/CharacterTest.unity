@@ -123,39 +123,9 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &227842867
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 227842868}
-  m_Layer: 0
-  m_Name: camTarget
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &227842868
+--- !u!4 &227842868 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227842867}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.528, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 249205099}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &249205099 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6244794284300044588, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
+  m_CorrespondingSourceObject: {fileID: 227842868, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
   m_PrefabInstance: {fileID: 1966190893604481911}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &482113585
@@ -349,11 +319,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1397596281 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1518297072329715512, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-  m_PrefabInstance: {fileID: 1966190893604481911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1554449389
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 227842868}
-  MaxDistance: 10
+  MaxDistance: 3
   sensitivity: 10
   invertY: 0
   relaxSpeed: 20
@@ -649,30 +614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 951238200076403893, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1518297072320414110, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.08
-      objectReference: {fileID: 0}
     - target: {fileID: 2328740939204085981, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
       propertyPath: PlayerCamera
       value: 
       objectReference: {fileID: 1942515261}
-    - target: {fileID: 2328740939204085981, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-      propertyPath: jumpHeight
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2328740939204085981, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 1397596281}
-    - target: {fileID: 2328740939204085981, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-      propertyPath: _animator
-      value: 
-      objectReference: {fileID: 1397596281}
     - target: {fileID: 5073978323865341107, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
       propertyPath: m_Name
       value: Player
