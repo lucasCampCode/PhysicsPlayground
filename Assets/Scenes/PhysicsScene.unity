@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1518297072329715512, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2328740939204085981, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
       propertyPath: PlayerCamera
       value: 
@@ -140,6 +144,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5073978323865341107, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5073978323865341107, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6244794284300044588, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
@@ -640,6 +648,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1316015338}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!95 &1393544274 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1518297072329715512, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
+  m_PrefabInstance: {fileID: 628566656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1417551533
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1072,6 +1085,7 @@ GameObject:
   - component: {fileID: 1828650045}
   - component: {fileID: 1828650044}
   - component: {fileID: 1828650043}
+  - component: {fileID: 1828650046}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: ArenaArea
@@ -1114,6 +1128,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1828650046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828650042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c852dcf6247a434f86d39a335d4d0d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obsticle: {fileID: 8700629076643196785, guid: 64e8814dc7b14874d8f2b80078caf8ba, type: 3}
+  _animator: {fileID: 1393544274}
+  _timerBySeconds: 50
+  _spawnTimer: 1
 --- !u!59 &1948124668 stripped
 HingeJoint:
   m_CorrespondingSourceObject: {fileID: 5972463452364432665, guid: 8e73a761c2450e0478bf4b26ec37bda5, type: 3}
