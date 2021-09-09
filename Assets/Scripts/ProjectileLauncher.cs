@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
+    public Camera camera;
     public Transform target;
     public Rigidbody projectile;
+
 
     public float airTime = 2.0f;
 
@@ -16,17 +18,28 @@ public class ProjectileLauncher : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
-            LaunchProjectile();
+            LaunchProjectile(target.position);
+        if (Input.GetMouseButton(0))
+        {
+            RaycastHit hit;
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            if(Physics.Raycast(ray,out hit))
+            {
+                LaunchProjectile(hit.transform.position);
+            }
+        }
+
     }
-    public void LaunchProjectile()
+    public void LaunchProjectile(Vector3 Targetposition)
     {
-        _displacement = target.position - transform.position;
+        _displacement = Targetposition - transform.position;
         _acceleration = Physics.gravity;
         _initialVelocity = FindInitialVelocity(_displacement, _acceleration, airTime);
         _finalVelocity = FindFinalVelocity(_initialVelocity, _acceleration, airTime);
 
-        Rigidbody instance =  Instantiate(projectile, transform.position, transform.rotation);
-        instance.AddForce(_initialVelocity,ForceMode.VelocityChange);
+        Rigidbody instance = Instantiate(projectile, transform.position, transform.rotation);
+
+        instance.AddForce(_initialVelocity, ForceMode.VelocityChange);
     }
 
     private Vector3 FindFinalVelocity(Vector3 initalVelocity,Vector3 acceleration, float time)

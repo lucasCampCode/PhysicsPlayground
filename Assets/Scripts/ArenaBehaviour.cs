@@ -43,12 +43,16 @@ public class ArenaBehaviour : MonoBehaviour
                 float randomX = Random.Range(-transform.localScale.x/2, transform.localScale.x/2);
                 float randomY = Random.Range(minHeightSpawn, transform.localScale.y / 2);
                 float randomZ = Random.Range(-transform.localScale.z/2, transform.localScale.z/2);
+
                 Vector3 randomXYZ = new Vector3(randomX,randomY, randomZ);
                 if (randomXYZ.magnitude > transform.localScale.x / 2)
-                    randomXYZ = randomXYZ.normalized * (transform.localScale.x - 10)/ 2 ;
-                Vector3 spawnPosition = new Vector3(transform.position.x + randomXYZ.x, transform.position.y + randomXYZ.y, transform.position.z + randomXYZ.z);
+                    randomXYZ = randomXYZ.normalized * (transform.localScale.x - 5)/ 2 ;
+                
+                Vector3 spawnPosition = transform.position + randomXYZ;
+
                 GameObject obj = Instantiate(obsticle, spawnPosition,new Quaternion());
                 Destroy(obj, _timerBySeconds - currentTime);
+
                 currentTime2 -= _spawnTimer;
             }
 

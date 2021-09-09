@@ -52,13 +52,13 @@ public class PlayerBehaviour : MonoBehaviour
 
          _animator.SetFloat("Speed", _desiredVelocity.magnitude / speed);
         //change player facing
-        if (faceWithCamera)
+        if (faceWithCamera && !_dead)
         {
             transform.forward = cameraForward;
             _animator.SetFloat("Speed", inputForward);
             _animator.SetFloat("Direction", inputRight);
         }
-        else if (_desiredVelocity != Vector3.zero)
+        else if (_desiredVelocity != Vector3.zero && !_dead)
         {
             transform.forward = _desiredVelocity;
         }
