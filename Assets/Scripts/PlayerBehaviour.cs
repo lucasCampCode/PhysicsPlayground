@@ -21,6 +21,8 @@ public class PlayerBehaviour : MonoBehaviour
     private bool _isJumpedDesired;
     private bool _dead = false;
 
+    public bool Dead { set { _dead = value; } }
+
     private void Awake()
     {
         _controller = GetComponent<CharacterController>();
@@ -75,13 +77,17 @@ public class PlayerBehaviour : MonoBehaviour
         _airVelocity += Physics.gravity * gravityModifier * Time.fixedDeltaTime;
         _desiredVelocity += _airVelocity;
 
+        _animator.SetFloat("VerticalSpeed", _airVelocity.y / jumpHeight);
         //move
         if(!_dead)
             _controller.Move(_desiredVelocity * Time.deltaTime);
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if(hit.gameObject.CompareTag("Hazard"))
+        if (hit.gameObject.CompareTag("Hazard"))
+        {
+            _dead = true;
             _animator.enabled = false;
+        }
     }
 }

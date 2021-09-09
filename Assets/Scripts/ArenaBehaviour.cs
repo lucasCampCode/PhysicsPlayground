@@ -6,9 +6,10 @@ public class ArenaBehaviour : MonoBehaviour
 {
     public GameObject obsticle = null;
     public Material activeMaterial = null;
-
     [SerializeField]
     private Animator _animator = null;
+
+    public float minHeightSpawn = 2;
     [SerializeField]
     private float _timerBySeconds = 10;
     [SerializeField, Tooltip("second per drop")]
@@ -25,6 +26,7 @@ public class ArenaBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponent<PlayerBehaviour>().Dead = true;
             _animator.enabled = false;
         }
     }
@@ -38,9 +40,13 @@ public class ArenaBehaviour : MonoBehaviour
                 Destroy(gameObject);
             if(currentTime2 > _spawnTimer)
             {
-                float randomX = transform.position.x + Random.Range(-transform.localScale.x/2, transform.localScale.x/2);
-                float randomZ = transform.position.z + Random.Range(-transform.localScale.z/2, transform.localScale.z/2);
-                Vector3 spawnPosition = new Vector3(randomX, transform.position.y + 10,randomZ);
+                float randomX = Random.Range(-transform.localScale.x/2, transform.localScale.x/2);
+                float randomY = Random.Range(minHeightSpawn, transform.localScale.y / 2);
+                float randomZ = Random.Range(-transform.localScale.z/2, transform.localScale.z/2);
+                Vector3 randomXYZ = new Vector3(randomX,randomY, randomZ);
+                if (randomXYZ.magnitude > transform.localScale.x / 2)
+                    randomXYZ = randomXYZ.normalized * (transform.localScale.x - 10)/ 2 ;
+                Vector3 spawnPosition = new Vector3(transform.position.x + randomXYZ.x, transform.position.y + randomXYZ.y, transform.position.z + randomXYZ.z);
                 GameObject obj = Instantiate(obsticle, spawnPosition,new Quaternion());
                 Destroy(obj, _timerBySeconds - currentTime);
                 currentTime2 -= _spawnTimer;
