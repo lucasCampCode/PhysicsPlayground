@@ -19,6 +19,7 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector3 _desiredVelocity;
     private Vector3 _airVelocity;
     private bool _isJumpedDesired;
+    private bool _dead = false;
 
     private void Awake()
     {
@@ -75,6 +76,12 @@ public class PlayerBehaviour : MonoBehaviour
         _desiredVelocity += _airVelocity;
 
         //move
-        _controller.Move(_desiredVelocity * Time.deltaTime);
+        if(!_dead)
+            _controller.Move(_desiredVelocity * Time.deltaTime);
+    }
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.CompareTag("Hazard"))
+            _animator.enabled = false;
     }
 }

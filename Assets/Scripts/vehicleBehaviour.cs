@@ -12,7 +12,7 @@ public class vehicleBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("CarHazard"))
+        if (collision.gameObject.CompareTag("Hazard"))
         {
             Destroy(frontLeft,timer);
             Destroy(frontRight,timer);  

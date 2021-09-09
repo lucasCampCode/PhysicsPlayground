@@ -4,16 +4,23 @@ using UnityEngine;
 
 public class ArenaBehaviour : MonoBehaviour
 {
-    public GameObject obsticle;
+    public GameObject obsticle = null;
+    public Material activeMaterial = null;
 
     [SerializeField]
-    private Animator _animator;
+    private Animator _animator = null;
     [SerializeField]
     private float _timerBySeconds = 10;
     [SerializeField, Tooltip("second per drop")]
     private float _spawnTimer = 1;
+
+    private MeshRenderer _renderer = null;
     private float currentTime = 0;
     private float currentTime2 = 0;
+    private void Awake()
+    {
+        _renderer = GetComponent<MeshRenderer>();
+    }
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -39,6 +46,31 @@ public class ArenaBehaviour : MonoBehaviour
                 currentTime2 -= _spawnTimer;
             }
 
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            _renderer.material = activeMaterial;
+
+            Mesh mesh = GetComponent<MeshFilter>().mesh;
+            Vector3[] normals = mesh.normals;
+            for (int i = 0; i < normals.Length; i++)
+                normals[i] = -normals[i];
+            mesh.normals = normals;
+
+            for (int m = 0; m < mesh.subMeshCount; m++)
+            {
+                int[] triangles = mesh.GetTriangles(m);
+                for (int i = 0; i < triangles.Length; i += 3)
+                {
+                    int temp = triangles[i + 0];
+                    triangles[i + 0] = triangles[i + 1];
+                    triangles[i + 1] = temp;
+                }
+                mesh.SetTriangles(triangles, m);
+            }
         }
     }
 }
