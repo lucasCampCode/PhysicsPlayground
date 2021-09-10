@@ -8,7 +8,6 @@ public class ProjectileLauncher : MonoBehaviour
     public Transform target = null;
     public Rigidbody projectile = null;
 
-
     public float fireDelay = 5;
     public float airTime = 2.0f;
 
@@ -35,9 +34,9 @@ public class ProjectileLauncher : MonoBehaviour
         }
 
     }
-    public void LaunchProjectile(Vector3 Targetposition)
+    public void LaunchProjectile(Vector3 TargetPosition)
     {
-        _displacement = Targetposition - transform.position;
+        _displacement = TargetPosition - transform.position;
         _acceleration = Physics.gravity;
         _initialVelocity = FindInitialVelocity(_displacement, _acceleration, airTime);
         _finalVelocity = FindFinalVelocity(_initialVelocity, _acceleration, airTime);
@@ -45,7 +44,7 @@ public class ProjectileLauncher : MonoBehaviour
         Rigidbody instance = Instantiate(projectile, transform.position, transform.rotation);
 
         instance.AddForce(_initialVelocity, ForceMode.VelocityChange);
-        Destroy(instance, 10);
+        Destroy(instance.gameObject, 10);
     }
 
     private Vector3 FindFinalVelocity(Vector3 initalVelocity,Vector3 acceleration, float time)
@@ -67,5 +66,11 @@ public class ProjectileLauncher : MonoBehaviour
         Vector3 initalVelocity = (displacement / time) - 0.5f * acceleration * time;
 
         return initalVelocity;
+    }
+    private Vector3 FindAcceleration(Vector3 displacement,Vector3 initialVelocity, float time)
+    {
+        // (2/t)((displacement/t) - initialVelocity) = acceleration
+        Vector3 acceleration = (2 / time) * ((displacement / time) - initialVelocity);
+        return acceleration;
     }
 }
