@@ -92,13 +92,13 @@ public class PlayerBehaviour : MonoBehaviour
         //apply jump strength
         if (_isJumpedDesired && _grounded)
         {
-            _airVelocity.y = Mathf.Sqrt((-2.0f * Physics.gravity.y) * jumpHeight);
+            _airVelocity.y = Mathf.Sqrt((-2.0f * Physics.gravity.y * gravityModifier) * jumpHeight); 
         }
         else if (_grounded)
             _airVelocity.y = -1.0f;
         
         //apply gravity
-        _airVelocity += Physics.gravity * gravityModifier * Time.fixedDeltaTime;
+        _airVelocity += Physics.gravity * gravityModifier * Time.deltaTime;
         _desiredVelocity += _airVelocity;
 
         _animator.SetFloat("VerticalSpeed", _airVelocity.y / jumpHeight);
@@ -106,6 +106,7 @@ public class PlayerBehaviour : MonoBehaviour
         if(!_dead)
             _controller.Move(_desiredVelocity * Time.deltaTime);
     }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("Hazard"))
