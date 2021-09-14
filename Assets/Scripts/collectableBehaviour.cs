@@ -31,7 +31,7 @@ public class collectableBehaviour : MonoBehaviour
             _angleStep *= -1;
 
         _rotationEuler.y += angleRotateYSpeed;
-        _rotationEuler.x = Mathf.Lerp(-angleLerp,angleLerp,_angleTime);
+        _rotationEuler.z = Mathf.Lerp(-angleLerp,angleLerp,_angleTime);
 
         Quaternion rotation = Quaternion.Euler(_rotationEuler);
 
