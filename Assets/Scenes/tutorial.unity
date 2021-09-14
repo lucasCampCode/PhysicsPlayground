@@ -1538,10 +1538,6 @@ PrefabInstance:
       propertyPath: PlayerCamera
       value: 
       objectReference: {fileID: 520871351}
-    - target: {fileID: 2328740939204085981, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-      propertyPath: sprintSpeed
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 5073978323865341107, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1597,18 +1593,6 @@ PrefabInstance:
     - target: {fileID: 6244794284300044588, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244794284300044588, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244794284300044588, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6244794284300044588, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e6a384fd256b6849a9a3c035eeb987e, type: 3}
