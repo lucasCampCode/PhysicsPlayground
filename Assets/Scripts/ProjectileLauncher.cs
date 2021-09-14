@@ -20,6 +20,7 @@ public class ProjectileLauncher : MonoBehaviour
     private void Update()
     {
         _fireTime += Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.F) && target != null)
             LaunchProjectile(target.position);
         if (Input.GetMouseButton(0))

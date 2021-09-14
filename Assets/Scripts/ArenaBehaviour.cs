@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArenaBehaviour : MonoBehaviour
 {
+    public GameObject rewardObject = null;
     public GameObject obsticle = null;
     public Material activeMaterial = null;
     [SerializeField]
@@ -14,7 +15,8 @@ public class ArenaBehaviour : MonoBehaviour
     private float _timerBySeconds = 10;
     [SerializeField, Tooltip("second per drop")]
     private float _spawnTimer = 1;
-
+    public bool squareArena = false;
+    public bool killOnExit = false;
     private MeshRenderer _renderer = null;
     private float currentTime = 0;
     private float currentTime2 = 0;
@@ -26,8 +28,13 @@ public class ArenaBehaviour : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<PlayerBehaviour>().Dead = true;
-            _animator.enabled = false;
+            if (killOnExit)
+            {
+                other.GetComponent<PlayerBehaviour>().Dead = true;
+                _animator.enabled = false;
+            }
+            else
+                Destroy(gameObject);
         }
     }
     private void OnTriggerStay(Collider other)
@@ -37,7 +44,11 @@ public class ArenaBehaviour : MonoBehaviour
             currentTime += Time.deltaTime;
             currentTime2 += Time.deltaTime;
             if (currentTime > _timerBySeconds)
+            {
+                if (killOnExit)
+                    Instantiate(rewardObject, transform.position, new Quaternion());
                 Destroy(gameObject);
+            }
             if(currentTime2 > _spawnTimer)
             {
                 float randomX = Random.Range(-transform.localScale.x/2, transform.localScale.x/2);
@@ -45,13 +56,14 @@ public class ArenaBehaviour : MonoBehaviour
                 float randomZ = Random.Range(-transform.localScale.z/2, transform.localScale.z/2);
 
                 Vector3 randomXYZ = new Vector3(randomX,randomY, randomZ);
-                if (randomXYZ.magnitude > transform.localScale.x / 2)
-                    randomXYZ = randomXYZ.normalized * (transform.localScale.x - 5)/ 2 ;
+
+                if (randomXYZ.magnitude > transform.localScale.x / 2 && !squareArena)
+                    randomXYZ = randomXYZ.normalized * (transform.localScale.x - 5)/ 2;
                 
                 Vector3 spawnPosition = transform.position + randomXYZ;
 
                 GameObject obj = Instantiate(obsticle, spawnPosition,new Quaternion());
-                Destroy(obj, _timerBySeconds - currentTime);
+                Destroy(obj, 5);
 
                 currentTime2 -= _spawnTimer;
             }

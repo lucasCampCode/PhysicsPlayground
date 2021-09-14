@@ -8,6 +8,7 @@ TagManager:
   - ArenaArea
   - Hazard
   - Collectable
+  - Special
   layers:
   - Default
   - TransparentFX

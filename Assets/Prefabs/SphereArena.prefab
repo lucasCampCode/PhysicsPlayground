@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 198221762493561111}
   - component: {fileID: 198221762493561106}
   m_Layer: 0
-  m_Name: arena
+  m_Name: SphereArena
   m_TagString: ArenaArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,8 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c852dcf6247a434f86d39a335d4d0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewardObject: {fileID: 0}
   obsticle: {fileID: 8700629076643196785, guid: 64e8814dc7b14874d8f2b80078caf8ba, type: 3}
   activeMaterial: {fileID: 2100000, guid: accc2a42012dc214c93cdf37ffb3c42f, type: 2}
   _animator: {fileID: 0}
+  minHeightSpawn: 2
   _timerBySeconds: 50
   _spawnTimer: 1
+  squareArena: 0
+  killOnExit: 0
