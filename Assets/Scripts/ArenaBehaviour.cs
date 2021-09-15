@@ -30,7 +30,7 @@ public class ArenaBehaviour : MonoBehaviour
         {
             if (killOnExit)
             {
-                other.GetComponent<PlayerBehaviour>().Dead = true;
+                other.GetComponent<PlayerMovementBehaviour>().Dead = true;
                 _animator.enabled = false;
             }
             else
