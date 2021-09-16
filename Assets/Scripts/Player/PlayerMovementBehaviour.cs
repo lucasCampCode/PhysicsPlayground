@@ -107,12 +107,11 @@ public class PlayerMovementBehaviour : MonoBehaviour
         {
             _airVelocity.y = Mathf.Sqrt(-2.0f * Physics.gravity.y * jumpHeight);
         }
-        else if (_grounded)
+        else if (_grounded && _airVelocity.y <= -1)
             _airVelocity.y = 0;
 
         _airVelocity.y += Physics.gravity.y * Time.deltaTime;
         _animator.SetFloat("VerticalSpeed", _airVelocity.y / jumpHeight);
-        Debug.Log(_desiredVelocity);
         //move
         if(!_dead)
             _body.velocity = _desiredVelocity + _airVelocity;
