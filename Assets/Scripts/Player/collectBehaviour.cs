@@ -18,6 +18,7 @@ public class collectBehaviour : MonoBehaviour
         if (collision.gameObject.CompareTag("Special"))
         {
             _imageAnim = _altScene;
+            rewardsCollected++;
             Destroy(collision.gameObject);
         }
     }
