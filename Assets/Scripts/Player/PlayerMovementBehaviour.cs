@@ -102,11 +102,20 @@ public class PlayerMovementBehaviour : MonoBehaviour
         }
 
         _animator.SetBool("Jump",!_grounded);
+        //apply jump strength
+        if (_isJumpedDesired && _grounded)
+        {
+            _airVelocity.y = Mathf.Sqrt(-2.0f * Physics.gravity.y * jumpHeight);
+        }
+        else if (_grounded)
+            _airVelocity.y = 0;
 
+        _airVelocity.y += Physics.gravity.y * Time.deltaTime;
         _animator.SetFloat("VerticalSpeed", _airVelocity.y / jumpHeight);
+        Debug.Log(_desiredVelocity);
         //move
         if(!_dead)
-            _body.MovePosition(transform.position + (_desiredVelocity * Time.deltaTime));
+            _body.velocity = _desiredVelocity + _airVelocity;
         else
             foreach (Rigidbody body in limbs)
             {
@@ -118,11 +127,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
                 }
             }
 
-        //apply jump strength
-        if (_isJumpedDesired && _grounded)
-        {
-            _body.AddForce(Vector3.up * Mathf.Sqrt(-2.0f * Physics.gravity.y * jumpHeight),ForceMode.Impulse);
-        }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
