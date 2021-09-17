@@ -45,10 +45,4 @@ public class collectableBehaviour : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if(hit.gameObject.CompareTag("Player")){
-            Destroy(gameObject);
-        }
-    }
 }

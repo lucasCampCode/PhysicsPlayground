@@ -31,7 +31,8 @@ public class CameraController : MonoBehaviour
         //move the camera
         RaycastHit hit;
         if (Physics.Raycast(target.position, -transform.forward, out hit, MaxDistance))
-            _currentDistance = hit.distance;
+            if(!hit.collider.isTrigger)
+                _currentDistance = hit.distance;
         else
             _currentDistance = Mathf.MoveTowards(_currentDistance, MaxDistance,relaxSpeed* Time.deltaTime);
 

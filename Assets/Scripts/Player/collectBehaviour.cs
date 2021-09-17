@@ -8,17 +8,18 @@ public class collectBehaviour : MonoBehaviour
     public Animator _altScene;
     public int winAmount = 1;
     private int rewardsCollected = 0;
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (hit.gameObject.CompareTag("Collectable"))
+        if (collision.gameObject.CompareTag("Collectable"))
         {
             rewardsCollected++;
-            Destroy(hit.gameObject);
+            Destroy(collision.gameObject);
         }
-        if (hit.gameObject.CompareTag("Special"))
+        if (collision.gameObject.CompareTag("Special"))
         {
             _imageAnim = _altScene;
-            Destroy(hit.gameObject);
+            rewardsCollected++;
+            Destroy(collision.gameObject);
         }
     }
     private void Update()

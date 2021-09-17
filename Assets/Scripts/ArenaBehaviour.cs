@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ArenaBehaviour : MonoBehaviour
 {
+    public float scaleAboveHead = 0;
     public GameObject rewardObject = null;
     public GameObject obsticle = null;
     public Material activeMaterial = null;
@@ -11,6 +12,7 @@ public class ArenaBehaviour : MonoBehaviour
     private Animator _animator = null;
 
     public float minHeightSpawn = 2;
+    public float maxHieghtSpawn = 10;
     [SerializeField]
     private float _timerBySeconds = 10;
     [SerializeField, Tooltip("second per drop")]
@@ -30,7 +32,7 @@ public class ArenaBehaviour : MonoBehaviour
         {
             if (killOnExit)
             {
-                other.GetComponent<PlayerBehaviour>().Dead = true;
+                other.GetComponent<PlayerMovementBehaviour>().Dead = true;
                 _animator.enabled = false;
             }
             else
@@ -51,16 +53,16 @@ public class ArenaBehaviour : MonoBehaviour
             }
             if(currentTime2 > _spawnTimer)
             {
-                float randomX = Random.Range(-transform.localScale.x/2, transform.localScale.x/2);
-                float randomY = Random.Range(minHeightSpawn, transform.localScale.y / 2);
-                float randomZ = Random.Range(-transform.localScale.z/2, transform.localScale.z/2);
+                float randomX = Random.Range(-scaleAboveHead, scaleAboveHead);
+                float randomY = Random.Range(minHeightSpawn, maxHieghtSpawn);
+                float randomZ = Random.Range(-scaleAboveHead, scaleAboveHead);
 
                 Vector3 randomXYZ = new Vector3(randomX,randomY, randomZ);
 
                 if (randomXYZ.magnitude > transform.localScale.x / 2 && !squareArena)
                     randomXYZ = randomXYZ.normalized * (transform.localScale.x - 5)/ 2;
                 
-                Vector3 spawnPosition = transform.position + randomXYZ;
+                Vector3 spawnPosition = other.transform.position + randomXYZ;
 
                 GameObject obj = Instantiate(obsticle, spawnPosition,new Quaternion());
                 Destroy(obj, 5);
