@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartScene.unity
+    guid: 7695eac08769fea4588542f476011617
+  - enabled: 1
     path: Assets/Scenes/tutorial.unity
     guid: 0900eba6955c5f04bbf5ed77811a989a
   - enabled: 1
@@ -14,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MazeScene.unity
     guid: 675c839c8b08b5c4aa3971afce42d205
+  - enabled: 1
+    path: Assets/Scenes/carRunner.unity
+    guid: 04a6039c0cb35fa418ae50cf0ea00074
   m_configObjects: {}

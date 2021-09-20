@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class FadeToBlack : MonoBehaviour
 {
-    public int sceneIndex = 0;
+    public string sceneIndex = "";
 
     public void GoToSpecificScene()
     {

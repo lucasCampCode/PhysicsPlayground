@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class collectBehaviour : MonoBehaviour
 {
     public Animator _imageAnim;
-    public Animator _altScene;
+    public string SpecialSceneName;
     public int winAmount = 1;
     private int rewardsCollected = 0;
     private void OnCollisionEnter(Collision collision)
@@ -17,7 +17,7 @@ public class collectBehaviour : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Special"))
         {
-            _imageAnim = _altScene;
+            _imageAnim.gameObject.GetComponent<FadeToBlack>().sceneIndex = SpecialSceneName;
             rewardsCollected++;
             Destroy(collision.gameObject);
         }
@@ -25,8 +25,6 @@ public class collectBehaviour : MonoBehaviour
     private void Update()
     {
         if(rewardsCollected >= winAmount)
-        {
             _imageAnim.SetBool("FadeToBlack", true);
-        }
     }
 }
