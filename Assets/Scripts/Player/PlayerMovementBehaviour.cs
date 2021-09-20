@@ -30,6 +30,7 @@ public class PlayerMovementBehaviour : MonoBehaviour
     private bool _sprintDepleted = false;
 
     public bool Dead { set { _dead = value; } }
+    public float Stamina { get{ return _curStamina; } }
 
     private void Awake()
     {
