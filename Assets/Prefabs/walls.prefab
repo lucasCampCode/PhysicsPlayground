@@ -109,6 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  radius: 10
+  radius: 20
   _mat: {fileID: 2100000, guid: 35b5da47973a99848bda9fe5a4d8646e, type: 2}
   _transparentMat: {fileID: 2100000, guid: 76f5868142333f84a9105d2901ef1436, type: 2}
