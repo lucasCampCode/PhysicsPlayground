@@ -54,7 +54,7 @@ public class ArenaBehaviour : MonoBehaviour
             {
                 //if kill on exit is enabled 
                 if (killOnExit)//spawn reward in front of player
-                    Instantiate(rewardObject, _animator.gameObject.transform.forward * 5, new Quaternion());
+                    Instantiate(rewardObject, _animator.gameObject.transform.position + _animator.gameObject.transform.forward * 5, new Quaternion());
                 Destroy(gameObject);//destroy arena
             }
             //if timer2 greater than spawn timer 
