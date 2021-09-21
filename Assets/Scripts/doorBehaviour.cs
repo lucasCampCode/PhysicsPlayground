@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class doorBehaviour : MonoBehaviour
+public class DoorBehaviour : MonoBehaviour
 {
     public Transform door;
     public Vector3 rotateOnOpen;

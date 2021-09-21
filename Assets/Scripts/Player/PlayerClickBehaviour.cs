@@ -21,7 +21,7 @@ public class PlayerClickBehaviour : MonoBehaviour
             {
                 cursorImage.SetActive(true);
                 if(Input.GetMouseButton(0))
-                    hit.collider.gameObject.GetComponent<doorBehaviour>().ToggleDoor();
+                    hit.collider.gameObject.GetComponent<DoorBehaviour>().ToggleDoor();
             }
             else
             {
