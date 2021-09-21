@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class MazeGameBehaviour : MonoBehaviour
 {
-    public GameObject showObject;
+    public GameObject[] showObject;
     public CollectBehaviour collection;
     private void Update()
     {
+        //when all arenas have been conqured show door knob
         if (collection.RewardsCollected >= collection.winAmount - 1)
         {
-            showObject.SetActive(true);
+            foreach(GameObject obj in showObject)
+                obj.SetActive(true);
         }
         else
-            showObject.SetActive(false);
+            foreach(GameObject obj in showObject)
+                obj.SetActive(false);
     }
 }

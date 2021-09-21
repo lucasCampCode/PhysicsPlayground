@@ -15,6 +15,7 @@ public class WakeupMaterialBehaviour : MonoBehaviour
 
     private void Awake()
     {
+        //get components of of the object its attacted to
         _rigidBody = GetComponent<Rigidbody>();
         _renderer = GetComponent<MeshRenderer>();
     }

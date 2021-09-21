@@ -65,24 +65,34 @@ public class PlayerMovementBehaviour : MonoBehaviour
         _desiredVelocity = inputRight * cameraRight + inputForward * cameraForward;
         _desiredVelocity.Normalize();
 
+        //stamina
+        //when stamina is greater than 0 and sprint is not depleted
         if (_isSprinting && _curStamina > 0 && !_sprintDepleted)
         {
+            //take away from stamina
             _curStamina -= Time.deltaTime * 2;
+            //increase speed
             _desiredVelocity *= sprintSpeed;
         }
         else
         {
+            //if stamina reaches 0
             if (_curStamina < 0)
             {
+                //sprint is depleted
                 _sprintDepleted = true;
+                //set it to an solid value
                 _curStamina = 0;
             }
+            //if sprint is depleted or current stamina is less than starting stamina
             if (_sprintDepleted || _curStamina <= stamina)
             {
+                //increase stamina
                 _curStamina += Time.deltaTime;
+                //if starting stamina is reached cap current stamina
                 if (_curStamina >= stamina)
                     _curStamina = stamina;
-                else if (_curStamina >= stamina / 2)
+                else if (_curStamina >= stamina / 2)//if stamina is over half sprint is not depleted
                     _sprintDepleted = false;
             }
             //set movement magnitude

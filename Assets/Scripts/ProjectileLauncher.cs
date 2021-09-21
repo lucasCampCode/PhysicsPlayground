@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
-    public Camera camera = null;
     public Transform target = null;
     public Rigidbody projectile = null;
 
@@ -23,16 +22,6 @@ public class ProjectileLauncher : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F) && target != null)
             LaunchProjectile(target.position);
-        if (Input.GetMouseButton(0))
-        {
-            RaycastHit hit;
-            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray,out hit) && fireDelay < _fireTime)
-            {
-                LaunchProjectile(hit.point);
-                _fireTime = 0;
-            }
-        }
 
     }
     public void LaunchProjectile(Vector3 TargetPosition)
