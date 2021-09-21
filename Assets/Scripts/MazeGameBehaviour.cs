@@ -5,7 +5,7 @@ using UnityEngine;
 public class MazeGameBehaviour : MonoBehaviour
 {
     public GameObject showObject;
-    public collectBehaviour collection;
+    public CollectBehaviour collection;
     private void Update()
     {
         if (collection.RewardsCollected >= collection.winAmount - 1)

@@ -1613,6 +1613,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 683157998172099154, guid: 444c698793065f2419fae56efe569b57, type: 3}
+      propertyPath: _movement
+      value: 
+      objectReference: {fileID: 4176554812395484109}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 444c698793065f2419fae56efe569b57, type: 3}
 --- !u!1 &965203751
@@ -2217,6 +2221,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -85.55054
       objectReference: {fileID: 0}
+    - target: {fileID: 1605252451272697474, guid: 45a2df88f04c6a043ac359179005bdaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 589247783}
+    - target: {fileID: 1605252451272697474, guid: 45a2df88f04c6a043ac359179005bdaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 6381158533199940662, guid: 45a2df88f04c6a043ac359179005bdaf, type: 3}
       propertyPath: m_AnchorMin.y
       value: 1
@@ -2248,6 +2260,22 @@ PrefabInstance:
     - target: {fileID: 8213291529351343136, guid: 45a2df88f04c6a043ac359179005bdaf, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -14.70829
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490375798641190050, guid: 45a2df88f04c6a043ac359179005bdaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 589247783}
+    - target: {fileID: 8490375798641190050, guid: 45a2df88f04c6a043ac359179005bdaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8490375798682604988, guid: 45a2df88f04c6a043ac359179005bdaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 589247783}
+    - target: {fileID: 8490375798682604988, guid: 45a2df88f04c6a043ac359179005bdaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
       objectReference: {fileID: 0}
     - target: {fileID: 8490375800260289218, guid: 45a2df88f04c6a043ac359179005bdaf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3457,6 +3485,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64cd92355415d2a41ad923c06612e79b, type: 3}
+--- !u!114 &4176554812395484109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6676411155561780144, guid: 64cd92355415d2a41ad923c06612e79b, type: 3}
+  m_PrefabInstance: {fileID: 4176554812395484108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810878664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6b45e917bd8b443af04e6ecfe59475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4245620754710082969
 PrefabInstance:
   m_ObjectHideFlags: 0

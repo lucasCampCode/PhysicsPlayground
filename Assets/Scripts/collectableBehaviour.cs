@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class collectableBehaviour : MonoBehaviour
+public class CollectableBehaviour : MonoBehaviour
 {
     public float positionLerpOffset = 2;
     public float angleRotateYSpeed = 15;

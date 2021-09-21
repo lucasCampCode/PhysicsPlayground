@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class showWhenCloseBehaviour : MonoBehaviour
+public class ShowWhenCloseBehaviour : MonoBehaviour
 {
     
     public GameObject player;

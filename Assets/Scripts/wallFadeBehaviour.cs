@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class wallFadeBehaviour : MonoBehaviour
+public class WallFadeBehaviour : MonoBehaviour
 {
 
     public GameObject player;

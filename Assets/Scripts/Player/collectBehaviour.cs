@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class collectBehaviour : MonoBehaviour
+public class CollectBehaviour : MonoBehaviour
 {
     public Animator _imageAnim;
     public string SpecialSceneName;

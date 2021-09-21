@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class pauseMenuBehaviour : MonoBehaviour
+public class PauseMenuBehaviour : MonoBehaviour
 {
     public GameObject menu;
 
@@ -12,6 +13,12 @@ public class pauseMenuBehaviour : MonoBehaviour
         {
             Pause();
         }
+    }
+    public void RestartLevel()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void Pause()
     {
