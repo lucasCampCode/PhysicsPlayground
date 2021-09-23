@@ -31,10 +31,14 @@ public class CameraController : MonoBehaviour
         //move the camera
         RaycastHit hit;
         if (Physics.Raycast(target.position, -transform.forward, out hit, MaxDistance))
-            if(!hit.collider.isTrigger)
+        {
+            if (!hit.collider.isTrigger && !hit.collider.CompareTag("Hazard"))
                 _currentDistance = hit.distance;
+            else
+                _currentDistance = Mathf.MoveTowards(_currentDistance, MaxDistance, relaxSpeed * Time.deltaTime);
+        }
         else
-            _currentDistance = Mathf.MoveTowards(_currentDistance, MaxDistance,relaxSpeed* Time.deltaTime);
+            _currentDistance = Mathf.MoveTowards(_currentDistance, MaxDistance, relaxSpeed * Time.deltaTime);
 
         transform.position = target.position + (_currentDistance * -transform.forward);
     }
