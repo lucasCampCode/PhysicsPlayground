@@ -11,5 +11,5 @@
 - the game will switch the the next stage when enough rewards are collected
 - obstacles CUBES!!!
 
-downlad:[latest](https://github.com/lucasCampCode/PhysicsPlayground/releases/tag/v1.1)
+downlad: [latest](https://github.com/lucasCampCode/PhysicsPlayground/releases/tag/v1.1)
 > extract and play.
