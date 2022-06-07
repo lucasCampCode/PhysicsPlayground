@@ -10,9 +10,6 @@
 - rewards will be given once the arena timers run out
 - the game will switch the the next stage when enough rewards are collected
 - obstacles CUBES!!!
-## How to Launch Game
-1. go into the release portion on the github website
-2. download the latest release
-3. unzip downloaded package
-4. launch the PhysicsPlayground.exe
-5. enjoy Game
+
+downlad:[latest](https://github.com/lucasCampCode/PhysicsPlayground/releases/tag/v1.1)
+extract and play.
